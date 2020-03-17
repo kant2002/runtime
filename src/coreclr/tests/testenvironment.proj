@@ -46,7 +46,8 @@
       COMPlus_TC_OnStackReplacement_InitialCounter;
       COMplus_OSR_HitLimit;
       COMPlus_JitEnableGuardedDevirtualization;
-      COMPlus_EnableEHWriteThru
+      COMPlus_EnableEHWriteThru;
+      COMPlus_JitObjectStackAllocation
     </COMPlusVariables>
   </PropertyGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <TestEnvironment Include="jitosr_stress" TC_OnStackReplacment="1" TC_QuickJitForLoops="1" TC_OnStackReplacement_InitialCounter="1" OSR_HitLimit="1" TieredCompilation="1"/>
     <TestEnvironment Include="jitguardeddevirtualization" JitEnableGuardedDevirtualization="1" TieredCompilation="0"/>
     <TestEnvironment Include="jitehwritethru" EnableEhWriteThru="1" TieredCompilation="0"/>
+    <TestEnvironment Include="jitobjectstackallocation" JitObjectStackAllocation="1" TieredCompilation="0"/>
   </ItemGroup>
 
   <!-- We use target batching on the COMPlusVariable items to iterate over the all COMPlus_* environment variables
