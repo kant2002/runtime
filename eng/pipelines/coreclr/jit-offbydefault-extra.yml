@@ -33,6 +33,8 @@ jobs:
     jobTemplate: /eng/pipelines/coreclr/templates/test-job.yml
     buildConfig: checked
     platforms:
+    # Linux tests are built on the OSX machines.
+    - OSX_x64
     - Linux_x64
     - Windows_NT_x64
     helixQueueGroup: ci
