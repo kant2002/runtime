@@ -23,6 +23,7 @@ jobs:
     platforms:
     - Linux_x64
     - Windows_NT_x64
+    jobParameters:
       testGroup: jit-offbydefault-extra
 
 - template: /eng/pipelines/common/platform-matrix.yml
