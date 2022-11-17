@@ -5,7 +5,7 @@ set -e
 usage()
 {
     echo "Usage: $0 [BuildArch] [CodeName] [lldbx.y] [llvmx[.y]] [--skipunmount] --rootfsdir <directory>]"
-    echo "BuildArch can be: arm(default), arm64, armel, armv6, ppc64le, riscv64, s390x, x64, x86"
+    echo "BuildArch can be: arm(default), arm64, armel, armv6, ppc64le, loongarch64, riscv64, s390x, x64, x86"
     echo "CodeName - optional, Code name for Linux, can be: xenial(default), zesty, bionic, alpine, alpine3.13 or alpine3.14. If BuildArch is armel, LinuxCodeName is jessie(default) or tizen."
     echo "                              for FreeBSD can be: freebsd12, freebsd13"
     echo "                              for illumos can be: illumos"
@@ -173,6 +173,12 @@ while :; do
             __UbuntuPackages=$(echo ${__UbuntuPackages} | sed 's/ libomp5//')
             unset __LLDB_Package
             ;;
+        loongarch64)
+            __BuildArch=loongarch64
+            __UbuntuArch=loongarch64
+            __UbuntuRepo="http://pkg.loongnix.cn/loongnix"
+            unset __LLDB_Package
+            ;;
         x64)
             __BuildArch=x64
             __UbuntuArch=amd64
@@ -249,6 +255,10 @@ while :; do
             __CodeName=buster
             __UbuntuRepo="http://ftp.debian.org/debian/"
             __LLDB_Package="liblldb-6.0-dev"
+            ;;
+        loongnix)
+            __CodeName=loongnix
+            __UbuntuRepo="http://ftp.debian.org/debian/"
             ;;
         tizen)
             __CodeName=

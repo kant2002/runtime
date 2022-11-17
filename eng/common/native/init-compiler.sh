@@ -136,7 +136,11 @@ fi
 if [[ "$compiler" == "clang" && "$majorVersion" -ge 9 ]]; then
     if "$CC" -fuse-ld=lld -Wl,--version >/dev/null 2>&1; then
         LDFLAGS="-fuse-ld=lld"
+    else
+        LDFLAGS="-u _ZNK21NativeFieldDescriptor26GetNestedNativeMethodTableEv"
     fi
+else
+    LDFLAGS="-u _ZNK21NativeFieldDescriptor26GetNestedNativeMethodTableEv"
 fi
 
 SCAN_BUILD_COMMAND="$(command -v "scan-build$desired_version")"
