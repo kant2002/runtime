@@ -139,7 +139,7 @@
     }
 
     .method public hidebysig instance void 'special.LdsfldStslfdInitonlyCctor..cctor_Valid'() cil managed { ret }
-    .method public hidebysig specialname rtspecialname instance void .cctor() cil managed
+    .method public hidebysig specialname rtspecialname static void .cctor() cil managed
     {
         ldsflda int32 FieldTestsType::StaticInitonlyField
         pop
@@ -172,7 +172,7 @@
     .field public static initonly int32 StaticInitonlyField
 
     .method public hidebysig instance void 'special.LdfldStlfdInitonlyCctor..cctor_Invalid_InitOnly'() cil managed { ret }
-    .method public hidebysig specialname rtspecialname instance void .cctor() cil managed
+    .method public hidebysig specialname rtspecialname static void .cctor() cil managed
     {
         ldsfld class OtherType OtherType::Instance
         ldflda int32 OtherType::InstanceInitonlyField

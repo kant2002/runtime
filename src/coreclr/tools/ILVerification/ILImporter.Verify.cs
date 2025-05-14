@@ -2161,7 +2161,8 @@ namespace Internal.IL
                 instance = null;
 
                 if (field.IsInitOnly)
-                    isReadOnly = true;
+                    Check(_method.IsStaticConstructor && field.OwningType == _method.OwningType, VerifierError.InitOnly);
+                    //isReadOnly = true;
             }
             else
             {

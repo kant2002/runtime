@@ -36,7 +36,7 @@ namespace ILVerification.Tests
         ///  [FriendlyName]_ValidType_Valid
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<TestCase[]> GetTypesWithValidType()
+        public static IEnumerable<object[]> GetTypesWithValidType()
         {
             var typeSelector = new Func<string[], TypeDefinitionHandle, TestCase>((mparams, typeDefinitionHandle) =>
             {
@@ -54,7 +54,7 @@ namespace ILVerification.Tests
         ///  [FriendlyName]_InvalidType_[ExpectedVerifierError1]@[ExpectedVerifierError2]....[ExpectedVerifierErrorN]
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<TestCase[]> GetTypesWithInvalidType()
+        public static IEnumerable<object[]> GetTypesWithInvalidType()
         {
             var typeSelector = new Func<string[], TypeDefinitionHandle, TestCase>((mparams, typeDefinitionHandle) =>
             {
@@ -110,7 +110,7 @@ namespace ILVerification.Tests
         /// The word after the '_' has to be 'Valid' (Case sensitive)
         /// E.g.: 'SimpleAdd_Valid'
         /// </summary>
-        public static IEnumerable<TestCase[]> GetMethodsWithValidIL()
+        public static IEnumerable<object[]> GetMethodsWithValidIL()
         {
             var methodSelector = new Func<string[], MethodDefinitionHandle, TestCase>((mparams, methodHandle) =>
             {
@@ -132,7 +132,7 @@ namespace ILVerification.Tests
         /// 3. part: the expected VerifierErrors as string separated by '.'.
         /// E.g.: SimpleAdd_Invalid_ExpectedNumericType
         /// </summary>
-        public static IEnumerable<TestCase[]> GetMethodsWithInvalidIL()
+        public static IEnumerable<object[]> GetMethodsWithInvalidIL()
         {
             var methodSelector = new Func<string[], MethodDefinitionHandle, TestCase>((mparams, methodHandle) =>
             {
@@ -306,6 +306,8 @@ namespace ILVerification.Tests
 
     public abstract class TestCase : IXunitSerializable
     {
+        [Obsolete("Called by the de-serializer; should only be called by deriving classes for de-serialization purposes")]
+        public TestCase() { }
         public string TestName { get; set; }
         public string TypeName { get; set; }
         public string MethodName { get; set; }

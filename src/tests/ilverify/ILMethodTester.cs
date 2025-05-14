@@ -20,7 +20,7 @@ namespace ILVerification.Tests
         public static void TestMethodsWithValidIL(ValidILTestCase validIL)
         {
             var results = Verify(validIL);
-            Assert.Empty(results);
+            Assert.True(results.Count() == 0, $"Expected no errors in test case {validIL}");
         }
 
         [Theory(DisplayName = "")]
@@ -44,7 +44,7 @@ namespace ILVerification.Tests
             finally
             {
                 Assert.NotNull(results);
-                Assert.Equal(invalidIL.ExpectedVerifierErrors.Count, results.Count());
+                Assert.True(invalidIL.ExpectedVerifierErrors.Count == results.Count(), $"Expected error codes {string.Join(",", invalidIL.ExpectedVerifierErrors)} but actual: {string.Join(",", results.Select(e => e.Code))} in test case {invalidIL}");
 
                 foreach (var item in invalidIL.ExpectedVerifierErrors)
                 {
